@@ -1,0 +1,16 @@
+{
+  "sessionId": "string",              // unikátní ID session
+  "taskId": "string",                 // ID hry (např. accommodation-apbrkhlmnr-v1)
+  "durationMs": "number",             // celkový čas hry v milisekundách
+  "metrics": {
+    "completionTimeSec": "number",    // dokončovací čas v sekundách
+    "errors": "number",               // počet chyb
+    "reactionTimeAvgMs": "number",    // průměrná reakce (ms)
+    "reactionTimeBestMs": "number",   // nejlepší reakce (ms)
+    "accuracyPct": "number"           // přesnost (%) 0–100
+  },
+  "details": {
+    // sem každá hra doplní své specifické údaje (např. touchLog, spanMax, sequenceLog…)
+  },
+  "createdAt": "timestamp"            // datum/čas vytvoření záznamu
+}
