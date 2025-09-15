@@ -1,0 +1,25 @@
+Použití GameResultSchema.json
+Co to je: univerzální formát pro výsledky všech her v iSenses.
+Jak to funguje: každá hra po dohrání zavolá emitScore(), které pošle JSON podle tohoto schématu.
+Struktura
+{
+  "sessionId": "string",
+  "taskId": "string",
+  "durationMs": "number",
+  "metrics": {          // základní data, vždy stejné klíče
+    "completionTimeSec": "number",
+    "errors": "number",
+    "reactionTimeAvgMs": "number",
+    "reactionTimeBestMs": "number",
+    "accuracyPct": "number"
+  },
+  "details": { },       // specifická data hry (volitelná, různé klíče)
+  "createdAt": "timestamp"
+}
+Uložení do DB
+Tabulka game_results:
+id, sessionId, taskId, durationMs, metrics (JSON), details (JSON), createdAt.
+Zobrazení v iSenses
+metrics = vždy vidí klient (rychlý přehled).
+details = zobrazí se po rozkliku (trenér, detailní logy).
+👉 Shrnutí: Každá hra = JSON podle GameResultSchema → uložit celý → metrics pro přehled, details pro detail.
