@@ -1,0 +1,4 @@
+Základní část (metrics) → sloupce completion_time_sec, reaction_time_avg_ms, accuracy_pct atd.
+Prostorová část (spatial) → souřadnice, vzdálenosti, přesnost kliků.
+Pokročilá část (advanced) → trajectory, srdeční tep, rovnováha.
+reaction_time_list_ms je pole → nejlépe uložit jako JSON (v PostgreSQL i MySQL 5.7+).
