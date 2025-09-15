@@ -1,0 +1,44 @@
+CREATE TABLE game_results (
+    id SERIAL PRIMARY KEY,              -- unikátní ID záznamu
+    session_id VARCHAR(100) NOT NULL,   -- ID session
+    task_id VARCHAR(100) NOT NULL,      -- ID hry/úkolu
+    client_id VARCHAR(100),             -- anonymní identifikátor klienta
+    date_time TIMESTAMP NOT NULL,       -- datum a čas měření
+    unit_type VARCHAR(50),              -- typ zařízení (Stand Unite, SensesBoard…)
+    task_name VARCHAR(100),             -- název úkolu
+    dominant_hand VARCHAR(10),          -- pravák/levák
+    stimulus_type VARCHAR(50),          -- typ podnětu
+
+    -- Základní metriky
+    completion_time_sec DECIMAL(8,2),
+    reaction_time_list_ms JSON,         -- pole časů (ms)
+    reaction_time_avg_ms INT,
+    reaction_time_best_ms INT,
+    decision_time_ms INT,
+    sensory_detection_time_ms INT,
+    movement_time_ms INT,
+    errors INT,
+    accuracy_pct INT,
+    decision_errors INT,
+    sequence_order_correct BOOLEAN,
+
+    -- Prostorová data
+    target_center_x DECIMAL(10,2),
+    target_center_y DECIMAL(10,2),
+    touch_x DECIMAL(10,2),
+    touch_y DECIMAL(10,2),
+    distance_error_px DECIMAL(10,2),
+    inside_target BOOLEAN,
+    touch_time_stamp TIMESTAMP,
+    correct BOOLEAN,
+    avg_distance_error_px DECIMAL(10,2),
+    max_distance_error_px DECIMAL(10,2),
+    touches_outside_target INT,
+
+    -- Pokročilá data
+    trajectory_score DECIMAL(5,2),
+    hr_avg INT,
+    balance_stability DECIMAL(5,2),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
