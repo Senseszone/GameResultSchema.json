@@ -1,16 +1,46 @@
 {
-  "sessionId": "string",              // unikátní ID session
-  "taskId": "string",                 // ID hry (např. accommodation-apbrkhlmnr-v1)
-  "durationMs": "number",             // celkový čas hry v milisekundách
+  "sessionId": "string",          // unikátní ID měření
+  "taskId": "string",             // ID hry/úkolu
+  "clientId": "string",           // anonymní ID klienta
+  "dateTime": "2025-09-15T10:30:00Z", // datum a čas měření
+  "unitType": "Stand Unite",      // typ zařízení (Stand Unite, SensesBoard…)
+  "taskName": "AccommodationGame",// název úkolu
+  "dominantHand": "right",        // pravák/levák
+  "stimulusType": "visual",       // typ podnětu (zrakový, sluchový, multisenzorický)
+
   "metrics": {
-    "completionTimeSec": "number",    // dokončovací čas v sekundách
-    "errors": "number",               // počet chyb
-    "reactionTimeAvgMs": "number",    // průměrná reakce (ms)
-    "reactionTimeBestMs": "number",   // nejlepší reakce (ms)
-    "accuracyPct": "number"           // přesnost (%) 0–100
+    "completionTimeSec": 0,       // celkový čas (s)
+    "reactionTimeListMs": [],     // seznam všech reakcí
+    "reactionTimeAvgMs": 0,       // průměrná reakce
+    "reactionTimeBestMs": 0,      // nejlepší reakce
+    "decisionTimeMs": null,       // čas rozhodnutí
+    "sensoryDetectionTimeMs": null,// doba od podnětu do začátku reakce
+    "movementTimeMs": null,       // doba pohybu
+    "errors": 0,                  // chyby celkem
+    "accuracyPct": 0,             // přesnost (%)
+    "decisionErrors": null,       // chyby v rozhodnutí
+    "sequenceOrderCorrect": null  // 1 = ano, 0 = ne
   },
-  "details": {
-    // sem každá hra doplní své specifické údaje (např. touchLog, spanMax, sequenceLog…)
+
+  "spatial": {
+    "targetCenterX": null,
+    "targetCenterY": null,
+    "touchX": null,
+    "touchY": null,
+    "distanceErrorPx": null,
+    "insideTarget": null,         // 1 = ano, 0 = ne
+    "touchTimeStamp": null,
+    "correct": null,              // 1 = správně, 0 = chyba
+    "avgDistanceErrorPx": null,
+    "maxDistanceErrorPx": null,
+    "touchesOutsideTarget": null
   },
-  "createdAt": "timestamp"            // datum/čas vytvoření záznamu
+
+  "advanced": {
+    "trajectoryScore": null,      // kvalita pohybu (plynulost, přesnost)
+    "hrAvg": null,                // průměrný srdeční tep
+    "balanceStability": null      // stabilita rovnováhy
+  },
+
+  "createdAt": "2025-09-15T10:30:00Z" // čas uložení do DB
 }
